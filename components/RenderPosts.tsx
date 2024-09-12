@@ -1,3 +1,4 @@
+import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 
 type PostType = {
@@ -7,6 +8,7 @@ type PostType = {
   author: { name: string };
   publishedAt: string;
   bodyText: [{ text: string }];
+  mainImage: [];
 };
 
 export default function RenderPosts({ posts }: { posts: PostType[] }) {
@@ -17,7 +19,7 @@ export default function RenderPosts({ posts }: { posts: PostType[] }) {
           <li className="flex gap-8" key={post._id}>
             <Link href={`/posts/${post?.slug?.current}`} className="w-full">
               <img
-                src="https://img.freepik.com/premium-photo/portrait-young-woman-contemplating-perception-reflection_1168123-40581.jpg"
+                src={urlFor(post.mainImage).width(800).url()}
                 alt="image"
                 className="w-[400px]"
               />

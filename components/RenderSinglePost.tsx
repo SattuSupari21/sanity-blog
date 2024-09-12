@@ -1,3 +1,5 @@
+import { urlFor } from "@/sanity/lib/image";
+
 type PostType = {
   _id: string;
   title: string;
@@ -5,6 +7,7 @@ type PostType = {
   author: { name: string };
   publishedAt: string;
   bodyText: [{ text: string }];
+  mainImage: [];
 };
 
 export default function RenderSinglePost({ post }: { post: PostType[] }) {
@@ -28,7 +31,7 @@ export default function RenderSinglePost({ post }: { post: PostType[] }) {
             </div>
             <p className="font-bold">by @{post.author.name}</p>
             <img
-              src="https://img.freepik.com/premium-photo/portrait-young-woman-contemplating-perception-reflection_1168123-40581.jpg"
+              src={urlFor(post.mainImage).width(800).url()}
               alt="image"
               className="w-[800px]"
             />

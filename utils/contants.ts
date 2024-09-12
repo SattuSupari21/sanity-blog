@@ -8,7 +8,7 @@ export const POSTS_QUERY = defineQuery(`*[
     _type == "block" => {
       "text": pt::text(@)
     }
-  }}|order(date desc)`);
+  }, mainImage}|order(date desc)`);
 
 export const GET_POST_QUERY = (slug: string) => {
   return `*[
@@ -17,5 +17,5 @@ export const GET_POST_QUERY = (slug: string) => {
     _type == "block" => {
       "text": pt::text(@)
     }
-  }}|order(date desc)`;
+  }, mainImage}|order(date desc)`;
 };
