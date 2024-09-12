@@ -1,4 +1,5 @@
 import { urlFor } from "@/sanity/lib/image";
+import { EditIcon, TrashIcon } from "@sanity/icons";
 
 type PostType = {
   _id: string;
@@ -30,6 +31,16 @@ export default function RenderSinglePost({ post }: { post: PostType[] }) {
               )}
             </div>
             <p className="font-bold">by @{post.author.name}</p>
+            <div className="min-w-[310px] flex gap-2 mb-6">
+              <button className="flex flex-1 flex-grow gap-1 items-center justify-center p-2 py-4 bg-zinc-800 text-white rounded-lg shadow-xl">
+                <EditIcon />
+                Edit this post
+              </button>
+              <button className="flex flex-1 flex-grow gap-1 items-center justify-center p-2 py-4 bg-zinc-800 text-white rounded-lg shadow-xl">
+                <TrashIcon />
+                Delete this post
+              </button>
+            </div>
             <img
               src={urlFor(post.mainImage).width(800).url()}
               alt="image"
