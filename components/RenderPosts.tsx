@@ -1,0 +1,44 @@
+import Link from "next/link";
+
+type PostType = {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  author: { name: string };
+  publishedAt: string;
+  bodyText: [{ text: string }];
+};
+
+export default function RenderPosts({ posts }: { posts: PostType[] }) {
+  return (
+    <main className="flex justify-center mx-auto text-black mt-32 max-w-[800px] flex-col">
+      <ul className="grid grid-cols-1 gap-6">
+        {posts.map((post) => (
+          <li className="flex gap-8" key={post._id}>
+            <Link href={`/posts/${post?.slug?.current}`} className="w-full">
+              <img
+                src="https://img.freepik.com/premium-photo/portrait-young-woman-contemplating-perception-reflection_1168123-40581.jpg"
+                alt="image"
+                className="w-[400px]"
+              />
+            </Link>
+            <div className="flex flex-col justify-between">
+              <div>
+                <h2 className="text-xl font-semibold">{post?.title}</h2>
+                {post?.publishedAt && (
+                  <div className="flex gap-2 mt-3">
+                    <p>{post.author.name}</p>
+                    <p className="text-gray-500">
+                      {new Date(post.publishedAt).toDateString()}
+                    </p>
+                  </div>
+                )}
+              </div>
+              <p>{post.bodyText[0].text.slice(0, 200)}...</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
+}
