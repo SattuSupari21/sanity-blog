@@ -4,6 +4,6 @@ export type PostType = {
   slug: { current: string };
   author: { name: string };
   publishedAt: string;
-  bodyText: [{ text: string }];
+  bodyText: { text: string }[];
   mainImage: [];
 };

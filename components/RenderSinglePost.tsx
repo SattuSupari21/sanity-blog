@@ -18,14 +18,18 @@ export default function RenderSinglePost({ post }: { post: PostType }) {
             </div>
           )}
         </div>
-        <p className="font-bold">by @{post.author.name}</p>
+        {post?.author && <p className="font-bold">by @{post.author.name}</p>}
         <img
           src={urlFor(post.mainImage).width(800).url()}
           alt="image"
           className="w-[800px]"
         />
         <div className="mt-8 flex flex-col justify-between text-lg font-medium">
-          <p>{post.bodyText[0].text}</p>
+          {post.bodyText.map((e, index: number) => (
+            <ul key={index} className="flex flex-col gap-1">
+              <li>{e.text}</li>
+            </ul>
+          ))}
         </div>
       </div>
     </main>

@@ -3,16 +3,24 @@ import { PostType } from "@/types/PostType";
 import Link from "next/link";
 
 export default function RenderPosts({ posts }: { posts: PostType[] }) {
+  function getSummaryText(bodyText: { text: string }[]) {
+    let text = "";
+    bodyText.map((e) => {
+      text = e.text;
+    });
+    return text.slice(0, 200);
+  }
+
   return (
-    <main className="flex justify-center mx-auto text-black mt-32 max-w-[800px] flex-col">
+    <main className="flex justify-center mx-auto text-black mt-32 max-w-[800px] flex-col pb-10">
       <ul className="grid grid-cols-1 gap-6">
         {posts.map((post) => (
-          <li className="flex gap-8" key={post._id}>
+          <li className="grid grid-cols-2 gap-10" key={post._id}>
             <Link href={`/posts/${post?.slug?.current}`} className="w-full">
               <img
                 src={urlFor(post.mainImage).width(800).url()}
                 alt="image"
-                className="w-[400px]"
+                className="max-w-[400px]"
               />
             </Link>
             <div className="flex flex-col justify-between">
@@ -27,7 +35,7 @@ export default function RenderPosts({ posts }: { posts: PostType[] }) {
                   </div>
                 )}
               </div>
-              <p>{post.bodyText[0].text.slice(0, 200)}...</p>
+              <p>{getSummaryText(post.bodyText)}...</p>
             </div>
           </li>
         ))}
