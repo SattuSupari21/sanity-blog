@@ -1,6 +1,5 @@
 import { urlFor } from "@/sanity/lib/image";
 import { PostType } from "@/types/PostType";
-import { EditIcon, TrashIcon } from "@sanity/icons";
 
 export default function RenderSinglePost({ post }: { post: PostType }) {
   return (
