@@ -16,9 +16,9 @@ export default async function PostPage({
   );
 
   return (
-    <div className="inset-0 -z-10 min-h-screen w-full pb-12 bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]">
+    <div>
       <Header />
-      <RenderSinglePost post={post} />
+      <RenderSinglePost post={post[0]} />
     </div>
   );
 }

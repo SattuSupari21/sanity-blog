@@ -1,15 +1,6 @@
 import { urlFor } from "@/sanity/lib/image";
+import { PostType } from "@/types/PostType";
 import Link from "next/link";
-
-type PostType = {
-  _id: string;
-  title: string;
-  slug: { current: string };
-  author: { name: string };
-  publishedAt: string;
-  bodyText: [{ text: string }];
-  mainImage: [];
-};
 
 export default function RenderPosts({ posts }: { posts: PostType[] }) {
   return (

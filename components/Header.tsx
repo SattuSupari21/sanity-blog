@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <div className="max-w-[800px] flex justify-between bg-zinc-800 p-2 mt-2 mx-auto rounded-2xl shadow-2xl">
+    <div className="max-w-[800px] flex justify-between bg-zinc-800 p-2 mt-2 mx-auto rounded-2xl shadow-xl">
       <HomeIcon className="text-white w-10 h-10" />
       <div className="flex gap-6 text-white my-auto font-medium">
         <Link href={"/"}>About</Link>
