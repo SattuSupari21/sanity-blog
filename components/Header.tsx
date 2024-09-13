@@ -6,7 +6,7 @@ export default function Header() {
     <div className="w-full sticky top-0 bg-zinc-800 p-2 shadow-xl">
       <div className="max-w-[800px] h-full flex items-center justify-between mx-auto">
         <HomeIcon className="text-white w-10 h-10" />
-        <div className="flex gap-6 text-white my-auto font-medium">
+        <div className="flex gap-6 text-white my-auto font-medium max-[768px]:hidden">
           <Link href={"/"}>About</Link>
           <Link href={"/"}>Service</Link>
           <Link href={"/"}>Careers</Link>

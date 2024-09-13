@@ -6,4 +6,5 @@ export type PostType = {
   publishedAt: string;
   bodyText: { text: string }[];
   mainImage: [];
+  content: any;
 };

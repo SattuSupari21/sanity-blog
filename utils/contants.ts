@@ -17,5 +17,5 @@ export const GET_POST_QUERY = (slug: string) => {
     _type == "block" => {
       "text": pt::text(@)
     }
-  }, mainImage}|order(date desc)`;
+  },"content": body, mainImage}|order(date desc)`;
 };

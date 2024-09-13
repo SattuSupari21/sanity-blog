@@ -1,9 +1,14 @@
 import { urlFor } from "@/sanity/lib/image";
 import { PostType } from "@/types/PostType";
+import { PortableText } from "next-sanity";
 
 export default function RenderSinglePost({ post }: { post: PostType }) {
+  const ImageComponent = ({ value }: { value: any }) => {
+    return <img src={urlFor(value).width(800).url()} alt="content-image" />;
+  };
+
   return (
-    <main className="flex justify-center mx-auto text-black mt-12 pb-4 max-w-[800px] flex-col">
+    <main className="max-[820px]:px-2 flex justify-center mx-auto text-black mt-12 pb-4 max-w-[800px] flex-col">
       <div
         className="flex flex-col items-center justify-center gap-4"
         key={post._id}
@@ -24,12 +29,17 @@ export default function RenderSinglePost({ post }: { post: PostType }) {
           alt="image"
           className="w-[800px]"
         />
-        <div className="mt-8 flex flex-col justify-between text-lg font-medium">
-          {post.bodyText.map((e, index: number) => (
-            <ul key={index} className="flex flex-col gap-1">
-              <li>{e.text}</li>
-            </ul>
-          ))}
+        <div className="min-w-full text-justify prose lg:prose-xl mt-6">
+          <PortableText
+            value={post.content}
+            components={{
+              types: {
+                image: ({ value }) => {
+                  return <ImageComponent value={value} />;
+                },
+              },
+            }}
+          />
         </div>
       </div>
     </main>

@@ -12,15 +12,18 @@ export default function RenderPosts({ posts }: { posts: PostType[] }) {
   }
 
   return (
-    <main className="flex justify-center mx-auto text-black mt-32 max-w-[800px] flex-col pb-10">
+    <main className="max-[820px]:px-2 flex justify-center mx-auto text-black mt-32 max-w-[800px] flex-col pb-10">
       <ul className="grid grid-cols-1 gap-6">
         {posts.map((post) => (
-          <li className="grid grid-cols-2 gap-10" key={post._id}>
+          <li
+            className="grid grid-cols-2 max-[768px]:grid-cols-1 gap-10 max-[768px]:gap-2"
+            key={post._id}
+          >
             <Link href={`/posts/${post?.slug?.current}`} className="w-full">
               <img
                 src={urlFor(post.mainImage).width(800).url()}
                 alt="image"
-                className="max-w-[400px]"
+                className="max-w-[400px] max-[768px]:min-w-full"
               />
             </Link>
             <div className="flex flex-col justify-between">
